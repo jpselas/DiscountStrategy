@@ -12,6 +12,10 @@ package discountstrategy;
 public class Receipt {
     private LineItem lineitem;
     //private String custId;
+    private double total;
+    private Product [] products;
+    private Customer[] customers;
+    private LineItem [] lineitems = {};
     
     
     

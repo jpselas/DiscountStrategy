@@ -10,7 +10,7 @@ package discountstrategy;
  * @author John
  */
 public class LineItem {
-  
+    private DataBase db;
     private int qty;
     private Product product;
 
