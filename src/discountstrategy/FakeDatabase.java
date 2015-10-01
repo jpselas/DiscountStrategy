@@ -50,7 +50,7 @@ public class FakeDatabase implements  DataBase {
     }
     
     /**
-     * Tries to find a Proudct by product id.
+     * Tries to find a Product by product id.
      * @param prodId - must not be null or empty
      * @return found Product or null if not found or bad argument
      */
