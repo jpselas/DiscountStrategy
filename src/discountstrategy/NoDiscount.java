@@ -12,10 +12,6 @@ package discountstrategy;
 public class NoDiscount implements DiscountStrategy {
     private double discountRate = 0;
     
-    public NoDiscount(double discountRate) {
-        this.discountRate = discountRate;
-        
-    }
     
 
     @Override

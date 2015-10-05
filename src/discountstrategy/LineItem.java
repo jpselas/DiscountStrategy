@@ -10,18 +10,34 @@ package discountstrategy;
  * @author John
  */
 public class LineItem {
-    private DataBase db;
+    private DataAccessStrategy db;
     private int qty;
     private Product product;
 
-    public LineItem() {
-    }
-
-    public LineItem(int qty, Product product) {
+    public LineItem(DataAccessStrategy db, int qty, Product product) {
+        this.db = db;
         this.qty = qty;
         this.product = product;
     }
 
+    public final Product findProduct(final String prodId){
+        return db.findProduct(prodId);
+        
+    }
+    
+//    public final Customer findCustomer(final String custId){
+//        return db.findCustomer();
+//        
+//    }
+    
+    
+    public LineItem() {
+    }
+
+    
+    
+    
+    
     
     public double getSubtotal(){
         
@@ -63,6 +79,14 @@ public class LineItem {
         this.product = product;
     }
 
+    public DataAccessStrategy getDb() {
+        return db;
+    }
+
+    public void setDb(DataAccessStrategy db) {
+        this.db = db;
+    }
+
     
     
    
@@ -73,7 +97,7 @@ public class LineItem {
     
     
     public static void main(String[] args) {
-        LineItem item = new LineItem(4,new Product ("A100","Men's Shorts", 31.00,new PercentOffDiscount(.1)));
+        LineItem item = new LineItem(new FakeDatabase(),4,new Product ("A100","Men's Shorts", 31.00,new PercentOffDiscount(.1)));
         
         double subtotal = item.getSubtotal();
         double subtotalDiscount = item.getSubTotalDiscount();

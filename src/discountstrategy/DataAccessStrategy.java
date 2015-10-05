@@ -9,7 +9,7 @@ package discountstrategy;
  *
  * @author jselas1
  */
-public interface DataBase {
+public interface DataAccessStrategy {
     
     Customer findCustomer(final String custId);
 
