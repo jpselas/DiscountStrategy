@@ -74,9 +74,7 @@ public class FakeDatabase implements  DataAccessStrategy {
         return product;
     }
     public static void main(String[] args) {
-        FakeDatabase yes = new FakeDatabase();
         
-        System.out.println(yes.findCustomer("100"));
         
     }
 }

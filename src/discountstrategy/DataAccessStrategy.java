@@ -13,11 +13,7 @@ public interface DataAccessStrategy {
     
     Customer findCustomer(final String custId);
 
-    /**
-     * Tries to find a Product by product id.
-     * @param prodId - must not be null or empty
-     * @return found Product or null if not found or bad argument
-     */
+    
     Product findProduct(final String prodId);
     
 }

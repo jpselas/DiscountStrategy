@@ -13,22 +13,14 @@ public class LineItem {
     private DataAccessStrategy db;
     private int qty;
     private Product product;
-
-    public LineItem(DataAccessStrategy db, int qty, Product product) {
+    
+    public LineItem(DataAccessStrategy db, int qty, String prodId) {
         this.db = db;
         this.qty = qty;
-        this.product = product;
+        this.product = db.findProduct(prodId);
     }
 
-    public final Product findProduct(final String prodId){
-        return db.findProduct(prodId);
-        
-    }
     
-//    public final Customer findCustomer(final String custId){
-//        return db.findCustomer();
-//        
-//    }
     
     
     public LineItem() {
@@ -36,7 +28,10 @@ public class LineItem {
 
     
     
-    
+    private final Product findProduct(final String prodId) {
+        // validation needed
+        return db.findProduct(prodId);
+    }
     
     
     public double getSubtotal(){
@@ -96,13 +91,6 @@ public class LineItem {
     
     
     
-    public static void main(String[] args) {
-        LineItem item = new LineItem(new FakeDatabase(),4,new Product ("A100","Men's Shorts", 31.00,new PercentOffDiscount(.1)));
-        
-        double subtotal = item.getSubtotal();
-        double subtotalDiscount = item.getSubTotalDiscount();
-        System.out.println("Expected Subtotal = 124 and got :" + subtotal);
-        System.out.println("Expected Subtotal Discount = 12.4 and got :" + subtotalDiscount);
-    }
+    
     
 }

@@ -10,46 +10,91 @@ package discountstrategy;
  * @author John
  */
 public class Receipt {
-    private LineItem lineitem;
+    //private LineItem lineitem;
+    private Customer customer;
     
-    private double total;
-    
+    private DataAccessStrategy db;
     private LineItem [] lineitems = {};
 
-    
-    
-    
-    
-    
-    public final Product findProduct(String prodId){
-        return lineitem.findProduct(prodId);
+    public Receipt(String custId, DataAccessStrategy db) {
+         this.db = db;
+         this.customer = db.findCustomer(custId);
+        
+    }
+
+    public void addLineItem(String prodId, int qty){
+        LineItem item = new LineItem(db,qty,prodId);
+        addLineItemToArray(item);
         
     }
     
-//    public final Customer findCustomer(final String custId){
-//        return lineitem.findCustomer(custId);
-//        
-//    }
+    public void addLineItemToArray(LineItem item){
+        LineItem [] items = new LineItem[lineitems.length+1];
+        
+        
+        
+        for(int i = 0; i< lineitems.length;i++){
+            items[i]=lineitems[i];
+            
+        }
+        items[items.length-1]= item;
+        lineitems = items;
+        items = null;
+        
+    }
     
     
-    
-    public LineItem getLineitem() {
-        return lineitem;
+    public final Customer findCustomer(final String custId) {
+        // validation is needed for method parameter
+        if(custId == null || custId.length() == 0) {
+            System.out.println("Invalid ID");
+            return null;  // end method prematurely after log to console
+        }
+        
+        Customer customerID = db.findCustomer(custId);
+        if(customerID == null){
+            System.out.println("Invalid ID");
+            
+        }
+        
+        return customerID;
     }
 
-    public void setLineitem(LineItem lineitem) {
-        this.lineitem = lineitem;
+    public Customer getCustomer() {
+        return customer;
     }
 
-    public double getTotal() {
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
+    
+    
+    
+
+
+    public double getTotalBeforeDiscount() {
+        double total= 0;
+        for(LineItem b : lineitems){
+            total += b.getSubtotal();
+            
+        }
+        
         return total;
     }
 
-    public void setTotal(double total) {
-        this.total = total;
+    public double getTotalSavings(){
+        double savingsTotal = 0;
+        for(LineItem b : lineitems){
+            savingsTotal += b.getSubTotalDiscount();
+            
+        }
+        return savingsTotal;
     }
 
-    
+    public double getTotal(){
+        return getTotalBeforeDiscount() - getTotalSavings();
+        
+    }
 
     public LineItem[] getLineitems() {
         return lineitems;
@@ -61,13 +106,16 @@ public class Receipt {
     
     
     public static void main(String[] args) {
-       //String custId = "100";
-       
-       Receipt test = new Receipt();
-       
-        //System.out.println(test.findCustomer("100"));
-        
-       
+        String custId = "100";
+        String prodId = "A101";
+        Receipt first = new Receipt(custId,new FakeDatabase());
+        String name = first.findCustomer(custId).getName();
+        System.out.println(name);
+        //first.addLineItem(prodId, 2);
+        first.addLineItem("A101", 16);
+        System.out.println("The total before discounts is :$" +first.getTotalBeforeDiscount());
+        System.out.println("The total savings are :$" +first.getTotalSavings());
+        System.out.println("The total after savings is :$" + first.getTotal());
     }
     
 }
