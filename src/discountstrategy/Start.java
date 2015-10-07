@@ -17,13 +17,14 @@ public class Start {
     public static void main(String[] args) {
         Register r = new Register();
         
-        // Customer #1 sale
+        // first sale
         r.startNewSale("100", new FakeDatabase(), new ConsoleOutput());
-        r.addItemToSale("B205", 2);
+        r.addItemToSale("B205", 5);
         r.addItemToSale("A101", 1);
+        r.addItemToSale("C222", 40);
         r.OutputReceipt();
         
-        // Customer #2 sale
+        // second sale
         r.startNewSale("200", new FakeDatabase(), new ConsoleOutput());
         r.addItemToSale("C222", 4);
         r.addItemToSale("B205", 6);

@@ -10,7 +10,7 @@ package discountstrategy;
  * @author jselas1
  */
 public class NoDiscount implements DiscountStrategy {
-    private double discountRate = 0;
+    private double discountRate;
     
     
 
@@ -37,7 +37,7 @@ public class NoDiscount implements DiscountStrategy {
 
     @Override
     public void setDiscountRate(double discountRate) {
-        this.discountRate = discountRate;
+        this.discountRate = 0;
     }
 
     

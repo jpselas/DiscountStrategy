@@ -44,7 +44,7 @@ public class LineItem {
         
     public double getSubTotalDiscount(){
         
-        return getSubtotal() - product.getDiscountProductTotal(qty);
+        return product.getAmountSaved(qty);
     }    
     
    public String getProdId() {

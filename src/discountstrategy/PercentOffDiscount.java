@@ -40,12 +40,5 @@ public class PercentOffDiscount implements DiscountStrategy {
         this.discountRate = discountRate;
     }
     
-    public static void main(String[] args) {
-        DiscountStrategy discount = new QtyDiscount(.10,5);
-        DiscountStrategy discount1 = new PercentOffDiscount(.10);
-        double amt = discount.getAmountSaved(14.00, 2);
-        System.out.println("Discount Amount: $" + amt);
-        double newTotal = discount.getDiscountProductTotal(14.00, 2);
-        System.out.println("Discount Product Total: $" + newTotal);
-    }
+    
 }

@@ -68,11 +68,6 @@ public class Product {
     }
     
     
-    public static void main(String[] args) {
-        Product product = new Product("A100","Hat",20.00,new PercentOffDiscount(.10));
-        
-        double amtSaved = product.getAmountSaved(2);
-        System.out.println("Expected $4.00 and got: $" + amtSaved);
-    }
+   
     
 }

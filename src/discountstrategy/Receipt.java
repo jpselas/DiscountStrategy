@@ -148,24 +148,10 @@ public class Receipt {
         double totalDue = getTotal();
         receiptData.append("\t\t\t\t\t\tTotal Due: \t").append(nf.format(totalDue)).append(CRLF);
         
-        // Now generate data string...
-        // Notice that the format is hardcoded into this method. We could do
-        // better by using a format strategy in the future.
+        
         output.outputReceipt(receiptData.toString());
     }
     
-    public static void main(String[] args) {
-        String custId = "100";
-        String prodId = "A101";
-        Receipt first = new Receipt(custId,new FakeDatabase(),new ConsoleOutput());
-        String name = first.findCustomer(custId).getName();
-        System.out.println(name);
-        //first.addLineItem(prodId, 2);
-        first.addLineItem("A101", 10);
-        first.addLineItem("C222",10);
-        System.out.println("The total before discounts is :$" +first.getTotalBeforeDiscount());
-        System.out.println("The total savings are :$" +first.getTotalSavings());
-        System.out.println("The total after savings is :$" + first.getTotal());
-    }
+    
     
 }
