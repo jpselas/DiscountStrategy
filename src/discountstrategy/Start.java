@@ -15,7 +15,20 @@ public class Start {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        Register r = new Register();
+        
+        // Customer #1 sale
+        r.startNewSale("100", new FakeDatabase(), new ConsoleOutput());
+        r.addItemToSale("B205", 2);
+        r.addItemToSale("A101", 1);
+        r.OutputReceipt();
+        
+        // Customer #2 sale
+        r.startNewSale("200", new FakeDatabase(), new ConsoleOutput());
+        r.addItemToSale("C222", 4);
+        r.addItemToSale("B205", 6);
+        r.OutputReceipt();
     }
+    
     
 }

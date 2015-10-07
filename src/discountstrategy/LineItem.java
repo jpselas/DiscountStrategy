@@ -33,7 +33,10 @@ public class LineItem {
         return db.findProduct(prodId);
     }
     
-    
+    public double getAmtSAved(){
+        return product.getAmountSaved(qty);
+        
+    }
     public double getSubtotal(){
         
         return product.getUnitPrice()* qty; 
