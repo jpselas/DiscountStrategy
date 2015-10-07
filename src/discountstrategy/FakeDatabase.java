@@ -11,9 +11,9 @@ package discountstrategy;
  */
 public class FakeDatabase implements  DataAccessStrategy {
      private Customer[] customers = {
-        new Customer("100", "John Smith"),
-        new Customer("200", "Sally Jones"),
-        new Customer("300", "Bob Clementi")
+        new Customer("100", "Billy Madison"),
+        new Customer("200", "Sir Issac Newton"),
+        new Customer("300", "Bernie Brewer")
     };
     
 
